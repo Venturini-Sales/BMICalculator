@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Onest', arial, sans-serif;
+  color: white;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #131515;
+  width: 100%;
+  height: 100vh;
+}
+
+spam {
+  font-style: bold
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 15rem;
+}
+
+.bmiCalculator {
+  border-radius: 20px;
+  box-shadow: 20px 20px #339989;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #272727;
+  padding: 20px;
+}
+
+.inputArea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.inputStyle {
+  width: 215px;
+  padding: 5px;
+  background-color: gray;
+  border-radius: 15px;
+}
+
+.inputStyle input {
+  margin-right: 10px;
+  width: 170px; 
+  height: 30px;
+  background-color: gray;
+  border: none;
+  font-size: 20px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.inputStyle input:focus {
+  outline: none;
+}
+
+.heightInput {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+.buttons button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 15px;
+  border-radius: 20px;
+  border: none;
+}
+
+.calculatorTitle {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.button {
+  transition: .6s;
+  transform: scale(100%);
+}
+
+.button:hover {
+  transition: .6s;
+  cursor: pointer;
+  transform: scale(120%);
+  box-shadow: 0 0 5px white;
+}
+
+.calculateButton {
+  background-color: #339989;
+}
+
+.calculateButton:hover {
+  background-color: #60beb0;
+}
+
+.clearButton {
+  background-color: #2f2e41;
+}
+
+.clearButton:hover {
+  background-color: #51506d;
+}   
+
+#workOutSvg img{
+  width: 400px;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.bmiScales {
+  display: flex;
+  flex-direction: row;
+}
+
+.bmiScale {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.scaleUnder{
+  border-top: solid orange;
+}
+
+.scaleNormal{
+  border-top: solid green;
+}
+
+.scaleOver{
+ border-top: solid lightcoral;
+}
+
+.scaleObese{
+ border-top: solid crimson;
+}
