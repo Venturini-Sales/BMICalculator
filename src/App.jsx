@@ -1,15 +1,16 @@
-  import { useState } from 'react'
+  import { useEffect, useState } from 'react'
   import './App.css'
   import SVG from './assets/workout.svg'
-
+  import CountUp from 'react-countup';
 
 
   function App() {
-
   const[height, setHeight] = useState('');
   const[weight, setWeight] = useState('');
   const[result, setResult] = useState(0);
   const[resultColor, setResultColor] = useState('white');
+
+  
 
   const calculateBMI = () => {
     
@@ -23,7 +24,8 @@
       return;
     }
 
-    const bmi = weight / (height * height);
+    const parsedHeight = parseFloat(height.replace(',', '.'));
+    const bmi = weight / (parsedHeight * parsedHeight);
     const formattedBMI = bmi.toFixed(2);
     setResult(+formattedBMI)
 
@@ -52,12 +54,20 @@
       setResultColor('white')
     }
 
+    const handleHeightChange = (e) => {
+      let value = e.target.value;
+      value = value.replace(/\D/g, '');
+      if (value.length > 1) {
+        value = `${value[0]},${value.slice(1)}`;
+      }
+      setHeight(value);
+    };
 
     return (
       
       <main className='container'>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=""/>
         <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100;400;800&display=swap" rel="stylesheet"/>
 
           <div className='bmiCalculator'>
@@ -71,15 +81,12 @@
 
             <label>Your Height:</label>
             <div className='inputStyle'>
-              <input type='number'
-              inputMode='numeric'
-              step="any"
+              <input type='text'
               value={height}
-              onChange={(e) => setHeight(+e.target.value)}
+              onChange={handleHeightChange}
               >
-            
               </input>
-              <spam>m</spam>
+              <span>m</span>
             </div>
 
             </div>
@@ -89,20 +96,20 @@
             <label>Your Weight</label>
             <div className='inputStyle'>
               <input type='number'
-              inputMode='numeric'
-              step="any"
               value={weight}
-              onChange={(e) => setWeight(+e.target.value)}>
+              onChange={(e) => setWeight(e.target.value)}>
             
               </input>
-              <spam>kg</spam>
+              <span>kg</span>
             </div>
 
             </div>
             </form>
 
             <div className='buttons'>
-            <button className='calculateButton button' onClick={calculateBMI}>Calculate</button>
+            <button className='calculateButton button' onClick={()=>{
+              calculateBMI();
+            }}>Calculate</button>
             <button className='clearButton button' onClick={clear}>Clear</button>
             </div>
           
@@ -111,8 +118,8 @@
               <div className='result'>
                     <p className='yourBMI'>Your BMI is:</p>
 
-                    <h1 style={{ color: resultColor}}>
-                      {result}
+                    <h1>
+                    <CountUp style={{ color: resultColor}} start={0} end={result} duration={2} decimal="." decimals={2} />
                     </h1>
 
               </div>
