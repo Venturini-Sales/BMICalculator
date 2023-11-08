@@ -13,6 +13,7 @@ body {
   background-color: #131515;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 spam {
@@ -22,7 +23,7 @@ spam {
 .container {
   display: flex;
   align-items: center;
-  gap: 15rem;
+  gap: 10rem;
 }
 
 .bmiCalculator {
@@ -159,4 +160,50 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .scaleObese{
  border-top: solid crimson;
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+
+  .bmiCalculator {
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  
+#workOutSvg img{
+  display: none;
+}
+}
+
+@media screen and (max-width: 480px) {
+  .bmiCalculator {
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .calculatorTitle {
+    font-size: 30px;
+  }
+  
+  .bmiScale h4{
+    font-size: 11px;
+  }
+
+  .bmiScale p {
+    font-size: 12px;
+  }
+#workOutSvg img{
+  display: none;
+}
+
+
 }

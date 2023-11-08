@@ -2,7 +2,8 @@
   import './App.css'
   import SVG from './assets/workout.svg'
   import CountUp from 'react-countup';
-
+  import { toast, ToastContainer } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 
   function App() {
   const[height, setHeight] = useState('');
@@ -10,17 +11,32 @@
   const[result, setResult] = useState(0);
   const[resultColor, setResultColor] = useState('white');
 
-  
-
   const calculateBMI = () => {
     
     if (height <= 0) {
-      alert("Enter your height");
+      toast.warn("Enter your height", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",});
       return;
     }
 
     if (weight <= 0) {
-      alert("Enter your weight");
+      toast.warn("Enter your weight", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+      });
       return;
     }
 
@@ -28,7 +44,7 @@
     const bmi = weight / (parsedHeight * parsedHeight);
     const formattedBMI = bmi.toFixed(2);
     setResult(+formattedBMI)
-
+    //teste
     if (bmi < 18.5) {
       setResultColor('orange')
     }
@@ -155,6 +171,18 @@
             <img src={SVG}/>
           </div>
 
+    <ToastContainer
+    position="top-center"
+    autoClose={2000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable={false}
+    pauseOnHover
+    theme="dark"
+    />
     </main>
     )
   }
