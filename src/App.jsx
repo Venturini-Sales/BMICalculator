@@ -44,7 +44,7 @@
     const bmi = weight / (parsedHeight * parsedHeight);
     const formattedBMI = bmi.toFixed(2);
     setResult(+formattedBMI)
-    //teste
+    
     if (bmi < 18.5) {
       setResultColor('orange')
     }
